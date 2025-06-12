@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    /* public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
         System.out.println();
 
@@ -53,5 +53,50 @@ public class Main {
 
         
 
+    } */
+
+    public static void main(String[] args) {
+        // Test Smartphone
+        Smartphone smartphone1 = new Smartphone("iPhone 15", "Apple", new BigDecimal("1200"), "123456789012345", 256);
+        System.out.println("=== Smartphone 1 ===");
+        System.out.println(smartphone1);
+        smartphone1.setNome("iPhone 15 Pro");
+        smartphone1.setMarca("Apple Inc.");
+        smartphone1.setPrezzo(new BigDecimal("1350"));
+        smartphone1.setIva(new BigDecimal("0.22"));
+        smartphone1.setCodiceIMEI("999999999999999");
+        smartphone1.setMemoriaInGb(512);
+        System.out.println("Dopo modifiche:");
+        System.out.println(smartphone1);
+        System.out.println();
+
+        // Test Televisori
+        Televisori tv1 = new Televisori("OLED G3", "LG", new BigDecimal("1800"), 65, true);
+        System.out.println("=== Televisore 1 ===");
+        System.out.println(tv1);
+        tv1.setNome("OLED G4");
+        tv1.setMarca("LG Electronics");
+        tv1.setPrezzo(new BigDecimal("2100"));
+        tv1.setIva(new BigDecimal("0.19"));
+        tv1.setPollici(77);
+        tv1.setSmart(true);
+        System.out.println("Dopo modifiche:");
+        System.out.println(tv1);
+        System.out.println();
+
+        // Test Cuffie
+        Cuffie cuffie1 = new Cuffie("WH-1000XM5", "Sony", new BigDecimal("350"), "Nero", true);
+        System.out.println("=== Cuffie 1 ===");
+        System.out.println(cuffie1);
+        cuffie1.setNome("WH-1000XM6");
+        cuffie1.setMarca("Sony Corporation");
+        cuffie1.setPrezzo(new BigDecimal("400"));
+        cuffie1.setIva(new BigDecimal("0.22"));
+        cuffie1.setColore("Blu");
+        cuffie1.setWireless(false);
+        System.out.println("Dopo modifiche:");
+        System.out.println(cuffie1);
+        System.out.println();
     }
+
 }
