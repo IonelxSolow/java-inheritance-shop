@@ -60,7 +60,7 @@ import java.math.BigDecimal;
 
         @Override
         public String toString(){
-            return super.toString() + "\nCodice IMEI : " + getCodiceIMEI() + "\n Memoria : " + getMemoriaInGb();
+            return super.toString() + "\nCodice IMEI : " + getCodiceIMEI() + "\nMemoria : " + getMemoriaInGb();
         }
 
     
