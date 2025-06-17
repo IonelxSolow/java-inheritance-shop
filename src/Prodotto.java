@@ -203,6 +203,14 @@ public class Prodotto {
         return null;
     }
 
+    public BigDecimal getPrezzoScontato(boolean hasFidelityCard){
+        if(!hasFidelityCard){
+            return getPrezzoIvato();
+        }
+        //Sconto base 2%
+        return getPrezzoIvato().multiply(new BigDecimal("0.98")).setScale(2, RoundingMode.DOWN);
+    }
+
     @Override
     public String toString() {
         if (nome != null) {

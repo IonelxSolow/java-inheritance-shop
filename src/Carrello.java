@@ -71,14 +71,26 @@ public class Carrello {
             System.out.println("----------------");
         }
 
-        scan.close();
+        
+
+        System.out.println("Hai una carta fedeltà? (si/no)"); 
+        String risposta = scan.nextLine().toLowerCase().trim();
+        boolean hasFidelityCard = risposta.equals("si");
+
+       scan.close();
 
         System.out.println("Ecco il tuo carrello: ");
 
-        for (int i = 0; i < prodotti.length; i++){
+        BigDecimal totale = BigDecimal.ZERO;
+
+        for (int i = 0; i < prodotti.length; i++) {
             System.out.println(prodotti[i]);
+            BigDecimal prezzo = prodotti[i].getPrezzoScontato(hasFidelityCard);
+            System.out.println("Prezzo finale: " + prezzo + "€");
+            totale = totale.add(prezzo);
             System.out.println("----------------");
         }
+        System.out.println("Totale carrello: " + totale.setScale(2, BigDecimal.ROUND_DOWN) + "€");
     }
 
 }

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /* public class Televisori extends Prodotto {
 
@@ -56,6 +57,16 @@ public class Televisori extends Prodotto {
 
     public void setSmart(boolean isSmartTv) {
         this.isSmartTv = isSmartTv;
+    }
+
+     @Override
+    public BigDecimal getPrezzoScontato(boolean hasFidelityCard) {
+        if (!hasFidelityCard) {
+            return getPrezzoIvato();
+        }
+        // Sconto 10% se NON smart, altrimenti 2%
+        BigDecimal sconto = !isSmartTv ? new BigDecimal("0.90") : new BigDecimal("0.98");
+        return getPrezzoIvato().multiply(sconto).setScale(2, RoundingMode.DOWN);
     }
 
     @Override

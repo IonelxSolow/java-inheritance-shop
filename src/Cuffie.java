@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /* public class Cuffie extends Prodotto{
 
@@ -57,6 +58,16 @@ public class Cuffie extends Prodotto {
 
     public void setWireless(boolean isWireless) {
         this.isWireless = isWireless;
+    }
+
+    @Override
+    public BigDecimal getPrezzoScontato(boolean hasFidelityCard) {
+        if (!hasFidelityCard) {
+            return getPrezzoIvato();
+        }
+        // Sconto 7% se cablate (non wireless), altrimenti 2%
+        BigDecimal sconto = !isWireless ? new BigDecimal("0.93") : new BigDecimal("0.98");
+        return getPrezzoIvato().multiply(sconto).setScale(2, RoundingMode.DOWN);
     }
 
     @Override

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /* public class Smartphone extends Prodotto {
 
@@ -57,6 +58,16 @@ import java.math.BigDecimal;
         public void setMemoriaInGb(int memoriaInGb) {
             this.memoriaInGb = memoriaInGb;
         }
+
+        @Override
+    public BigDecimal getPrezzoScontato(boolean hasFidelityCard) {
+        if (!hasFidelityCard) {
+            return getPrezzoIvato();
+        }
+        // Sconto 5% se memoria < 32GB, altrimenti 2%
+        BigDecimal sconto = memoriaInGb < 32 ? new BigDecimal("0.95") : new BigDecimal("0.98");
+        return getPrezzoIvato().multiply(sconto).setScale(2, RoundingMode.DOWN);
+    }
 
         @Override
         public String toString(){
